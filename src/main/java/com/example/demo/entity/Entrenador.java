@@ -23,7 +23,7 @@ import lombok.Data;
 public class Entrenador {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="entrenador_id", nullable=false)
 	private int serial;
 	
 	@Column(name="nombre", nullable=false)
@@ -39,10 +39,10 @@ public class Entrenador {
 	@Column(name="uuid", nullable=false)
 	private String uuId;
 	
-	@OneToOne(cascade = CascadeType.ALL, optional=false)
-	@MapsId
-	@JoinColumn(name="pueblo_id")
-	@PrimaryKeyJoinColumn
-	private Pueblo pueblo;
+	@OneToOne(cascade = CascadeType.ALL, optional = false)
+    @MapsId
+    @JoinColumn(name = "Pueblo_id")
+    private Pueblo pueblo;
+	
 	
 }

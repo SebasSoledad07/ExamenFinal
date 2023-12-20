@@ -1,12 +1,18 @@
 package com.example.demo.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
@@ -40,9 +46,11 @@ public class Pokemon {
 	@Column(name="uuid", nullable=false)
 	private String uuid;
 	
-	@OneToOne(mappedBy="pokemon_id")
-	@PrimaryKeyJoinColumn
-	private Pokemon pokemon;
+	  @OneToMany(mappedBy = "TipoPokemon", cascade = CascadeType.ALL)
+	    private Set<TipoPokemon> courses = new HashSet<>();
+    @MapsId
+    @JoinColumn(name = "tipo_pokemon")
+    private TipoPokemon tipoPokemon;
 	
 	
 	

@@ -7,7 +7,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -18,7 +20,6 @@ import lombok.Data;
 public class Pueblo {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="pueblo_id")
 	int serial;
 	
@@ -28,6 +29,9 @@ public class Pueblo {
 	@Column(name="uuid", nullable=false)
 	String uuid;
 	
-	@OneToOne(mappedBy="entrenador", cascade=CascadeType.ALL)
-	private Entrenador Entrenador;
+
+	
+	 @OneToOne(mappedBy = "entrenador", cascade = CascadeType.ALL)
+	 @PrimaryKeyJoinColumn
+	 private Entrenador entrenador;
 }

@@ -15,6 +15,11 @@ public class CapturaPokemon {
 
 	@OneToOne(cascade=CascadeType.ALL, optional=false)
 	@MapsId
+	@JoinColumn(name="entrenador_id")
+	private Entrenador entrenador;
+	
+	@OneToOne(cascade=CascadeType.ALL, optional=false)
+	@MapsId
 	@JoinColumn(name="pokemon_id")
 	private Pokemon pokemon;
 	
