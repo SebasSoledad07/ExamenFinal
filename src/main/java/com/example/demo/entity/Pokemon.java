@@ -33,8 +33,6 @@ public class Pokemon {
 	@Column(name="descripcion", nullable=false)
 	private String desc;
 	
-	@Column(name="tipo_pokemon", nullable=false)
-	private int tipo;
 	
 	@Column(name="fecha_descubrimiento", nullable=false)
 	private Date fechaDesc;
@@ -46,11 +44,9 @@ public class Pokemon {
 	@Column(name="uuid", nullable=false)
 	private String uuid;
 	
-	  @OneToMany(mappedBy = "TipoPokemon", cascade = CascadeType.ALL)
-	    private Set<TipoPokemon> courses = new HashSet<>();
-    @MapsId
-    @JoinColumn(name = "tipo_pokemon")
-    private TipoPokemon tipoPokemon;
+	@OneToMany(mappedBy = "TipoPokemon", cascade = CascadeType.ALL)
+	private Set<TipoPokemon> courses = new HashSet<>();
+   
 	
 	
 	
