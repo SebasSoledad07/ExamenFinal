@@ -1,32 +1,48 @@
 package com.example.demo.entity;
 import java.util.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import lombok.Data;
 
 
 @Data
 @Entity
-@Table(name="pokemon.entrenador")
+@Table(name="entrenador")
 public class Entrenador {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int serial;
-	@Column
-	String nombre;
+	private int serial;
 	
-	String apellido;
+	@Column(name="nombre", nullable=false)
+	private String nombre;
 	
-	Date fechaNacimiento;
 	
-	int pueblo_id;
+	@Column(name="apellido", nullable=false)
+	private String apellido;
 	
-	String uuId;
+	
+	@Column(name="fecha_nacimiento", nullable=false)
+	private Date fechaNacimiento;
+	
+	
+	@Column(name="pueblo_id", nullable=false)
+	private int puebloId;
+	
+	@Column(name="uuid", nullable=false)
+	private String uuId;
+	
+	//*/@OneToOne(mappedBy="Pueblo", cascade= CascadeType.ALL)
+	//private Pueblo pueblo;
 	
 }
