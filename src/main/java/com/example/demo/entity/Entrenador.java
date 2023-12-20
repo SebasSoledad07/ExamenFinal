@@ -8,7 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -31,18 +33,16 @@ public class Entrenador {
 	@Column(name="apellido", nullable=false)
 	private String apellido;
 	
-	
 	@Column(name="fecha_nacimiento", nullable=false)
 	private Date fechaNacimiento;
-	
-	
-	@Column(name="pueblo_id", nullable=false)
-	private int puebloId;
 	
 	@Column(name="uuid", nullable=false)
 	private String uuId;
 	
-	//*/@OneToOne(mappedBy="Pueblo", cascade= CascadeType.ALL)
-	//private Pueblo pueblo;
+	@OneToOne(cascade = CascadeType.ALL, optional=false)
+	@MapsId
+	@JoinColumn(name="pueblo_id")
+	@PrimaryKeyJoinColumn
+	private Pueblo pueblo;
 	
 }

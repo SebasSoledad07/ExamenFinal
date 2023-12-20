@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -16,7 +18,7 @@ import lombok.Data;
 public class Pokemon {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="pokemon_id")
 	private int serial;
 	
 	@Column(name="nombre", nullable=false)
@@ -37,6 +39,10 @@ public class Pokemon {
 	
 	@Column(name="uuid", nullable=false)
 	private String uuid;
+	
+	@OneToOne(mappedBy="pokemon_id")
+	@PrimaryKeyJoinColumn
+	private Pokemon pokemon;
 	
 	
 	

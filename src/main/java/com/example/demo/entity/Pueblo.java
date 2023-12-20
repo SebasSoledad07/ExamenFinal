@@ -19,13 +19,15 @@ public class Pueblo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="pueblo_id")
 	int serial;
+	
 	@Column(name="nombre", nullable=false)
 	String nombre;
+	
 	@Column(name="uuid", nullable=false)
 	String uuid;
 	
-	//@OneToOne(cascade=CascadeType.ALL, optional=false)
-	//@JoinColumn(name="pueblo_id")
-	//private Entrenador Entrenador;
+	@OneToOne(mappedBy="entrenador", cascade=CascadeType.ALL)
+	private Entrenador Entrenador;
 }
